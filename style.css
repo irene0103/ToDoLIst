@@ -1,0 +1,98 @@
+body{
+  background: #FFEDD7;
+  min-height: 100vh;
+  font-family: "Roboto Mono", monospace;
+}
+.container{
+  background-color: #E2EFFF;
+  width: 400px;
+  border-radius: 30px;
+  margin: 100px auto;
+  padding: 50px 100px;
+  box-shadow: 6px 6px #FEFEC0;
+  border: 5px solid #69ACFD;
+}
+.todo-list-title{
+position: relative;
+left: -20px;
+font-size: 35px;
+font-weight: 700;
+color: #69ACFD;
+margin: 20px auto;
+
+}
+.inner-wrapper{
+  width: 100px;
+  min-width: 350px;
+  margin: 0 auto;
+}
+.input-wrapper{
+  border-radius: 20px;
+  background: #ffffff;
+  min-width: 350px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.input-wrapper input{
+  background: none;
+  border: none;
+  flex: 1;
+  outline: none;
+  padding: 10px 20px;
+}
+.input-wrapper button{
+  background-color: #69ACFD;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.list{
+  list-style: none;
+  padding: 0px;
+}
+.list li{
+  vertical-align: middle;
+  font-weight: 700;
+  padding: 5px;
+  position: relative;
+}
+.list li.checked{
+  text-decoration: line-through;
+}
+.list li::before{
+  content:'';
+  display:inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url('assets/checkbox_unchecked.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  vertical-align: bottom;
+  margin-right: 10px;
+}
+.list li.checked::before{
+  background-image: url('assets/checkbox_checked.png');
+}
+.delete{
+  background-image: url("assets/trash.png");
+  border-radius: 50px;
+  background-position:center;
+  padding: 5px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  object-fit: contain;
+  background-repeat: no-repeat;
+}
+.delete:hover{
+  background-color: #ffffff;
+  cursor: pointer;
+}
