@@ -31,12 +31,13 @@ function initList() {
         li.innerText=item.text;
         const deleteButton=document.createElement("span");
         deleteButton.classList.add("delete");
-        deleteButton.onclick=deleteButton;
+        deleteButton.onclick=deleteItem;
         li.appendChild(deleteButton);
         li.classList.add("item");
         if(item.checked){
             li.classList.add("checked");
         }
+        li.onclick=checkItem;
         ul.appendChild(li);
         
     }
@@ -70,7 +71,7 @@ function addItem(){
     //先更新listState之後再同步更新DOM
     listState.push({
         text,
-        checked:fasle
+        checked:false
     });
     saveState(listState);
     //清空
@@ -80,14 +81,21 @@ function addItem(){
 //已完成項目
 function checkItem(){
     const item=this;
+    const parent=item.parentNode;
+    const idx=Array.from(parent.childNodes).indexOf(item);
+    listState[idx].checked=!listState[idx].checked;
     item.classList.toggle("checked");
+    saveState(listState);
     
 }
 //刪除項目
 function deleteItem(){
     const item=this.parentNode;
     const parent=item.parentNode;
+    const idx=Array.from(parent.childNodes).indexOf(item);
+    listState=listState.filter((_,i)=>i!==idx);
     parent.removeChild(item);
+    saveState(listState);
 }
 initList();
 
