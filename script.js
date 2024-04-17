@@ -69,9 +69,10 @@ function addItem(){
     newItem.appendChild(deleteButton);
 
     //先更新listState之後再同步更新DOM
+    //用物件來代表list裡面的item
     listState.push({
         text,
-        checked:false
+        checked:false //有無打勾
     });
     saveState(listState);
     //清空
@@ -82,20 +83,21 @@ function addItem(){
 function checkItem(){
     const item=this;
     const parent=item.parentNode;
-    const idx=Array.from(parent.childNodes).indexOf(item);
+    const idx=Array.from(parent.childNodes).indexOf(item); //將iterable轉換成array
     listState[idx].checked=!listState[idx].checked;
     item.classList.toggle("checked");
     saveState(listState);
     
 }
 //刪除項目
-function deleteItem(){
+function deleteItem(e){
     const item=this.parentNode;
     const parent=item.parentNode;
     const idx=Array.from(parent.childNodes).indexOf(item);
     listState=listState.filter((_,i)=>i!==idx);
     parent.removeChild(item);
     saveState(listState);
+    e.stopPropagation(); //解決:點擊刪除，外層parent也會被觸發(刪除按鈕是item的下一層，所以也觸發到checkitem但是因為item已經被刪除)
 }
 initList();
 
