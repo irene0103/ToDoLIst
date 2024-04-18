@@ -1,13 +1,13 @@
 body{
   background: #FFEDD7;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   font-family: "Roboto Mono", monospace;
 }
 .container{
   background-color: #E2EFFF;
   width: 400px;
   border-radius: 30px;
-  margin: 100px auto;
+  margin: 70px auto;
   padding: 50px 100px;
   box-shadow: 6px 6px #FEFEC0;
   border: 5px solid #69ACFD;
